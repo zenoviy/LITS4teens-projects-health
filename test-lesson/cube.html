@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>	
+	.frame{
+	  width: 400px;
+	  height: 200px;
+	  border: 1px solid #bbb;
+	  overflow: hidden;
+	  position: relative;
+	}
+	.box{
+	  width: 50px;
+	  height: 50px;
+	  background: red;
+	  position: absolute;
+	}	
+</style>
+<body>
+   <div id="frame" class="frame">
+     <div id="box" class="box"></div>
+   </div>
+   <span id="x-size"></span>
+   <span id="y-size"></span>
+</body>
+<script>
+const controller = {
+	posX: 0,
+	posY: 0,
+	selector: {
+		frame: document.querySelector("#frame"),
+    		box: document.querySelector("#box"),
+    		xSize: document.querySelector("#x-size"),
+    		ySize: document.querySelector("#y-size"),
+    },
+    scriptInit(){   
+  		let localObject = this;
+  		let localBox = localObject.selector.box;
+  		this.selector.frame.addEventListener("mousemove", function(event){
+			localObject.boxMove(localBox, event.clientX - localBox.clientWidth/2-5, event.clientY - localBox.clientHeight/2-5);
+
+      		localObject.displayItems(localObject.selector.xSize, event.clientX + "X-position");
+      	    localObject.displayItems(localObject.selector.ySize, event.clientY + "Y-position");
+    	})
+	  	document.addEventListener("keydown", function(event){
+	    	console.log( event)
+	    	//localObject.boxMove(localBox, )
+	    	/*
+				w  -87  
+				d  - 68
+				s  - 83
+				a  - 65
+	    			*/
+	    	localObject.posX = localBox.offsetLeft;
+	    	localObject.posY = localBox.offsetTop;
+	    	//console.log(localBox.offsetLeft, localBox.offsetTop);
+	    	if(event.keyCode  == 87){
+	    		//alert("up")
+	    		localObject.posY -= 5;
+	    	}else if( event.keyCode  == 68)	{
+	    		//alert("right")
+	    		localObject.posX += 5;
+	    	}else if( event.keyCode  == 83)	{
+	    		//alert("bottom")
+	    		localObject.posY += 5;
+	    	}else if( event.keyCode  == 65)	{
+	    		//alert("left")
+	    		localObject.posX -= 5;
+	    	}					
+	    	localObject.boxMove(localBox, localObject.posX, localObject.posY);	
+	    })	
+	},
+	boxMove(object, x, y){
+	  	object.style = `margin-left: ${x}px; margin-top: ${y}px;`;
+	},
+  	displayItems(object, text){
+  		object.innerHTML= ` mouse ${text} `;
+    }
+}
+controller.scriptInit()
+
+
+</script>
+</html>

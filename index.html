@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>New Exam</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+
+<!-- login form hidden -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">LogIn/Out</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+        <div id="log-out-field">
+            <h2>Welcome <span id="you-name"></span></h2>
+            <div>   
+                <img id="login-picture" class="login-picture" src="" alt="">
+            </div>
+            <button class="login-buttons" id="log-out">Logout </button>
+        </div>
+        <div id="log-in-reg-field">
+            <div class="row button-wrapper">
+                <button type="button" class="btn registration-switcher active-login-btn">login</button>
+                <button type="button" class="btn registration-switcher">registration</button>
+            </div>
+            
+            <div class="">
+                <div class="form-group">
+                    <div class="show-area">
+                        <div id="login-information" class="alert alert-danger" role="alert" style="display: none;"></div>
+                        <form id="login-logout-form">
+                            <input required type="email" class="form-control" name="email"  placeholder="Enter email">
+                            <input required type="password" class="form-control" name="password"  placeholder="password">
+                            <input id="login-btn" class="login-buttons" type="submit" value="logIn">
+                        </form>
+                        <form id="registration-form" class="hidden-area">
+                            <p>
+                                <div class="dropdown">
+                                    <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div id="uploadPicture" class="upload-picture"></div>
+                                    Load picture
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                    <ol id="image-select" class="image-select"></ol>
+                                  </div>
+                                </div>
+                            </p>
+                            <input name="name" class="form-control" min-width="6" required type="text" placeholder="you name">
+                            <input name="email" class="form-control" min-width="6" required type="email" placeholder="you emeil">
+                            <input name="password" class="form-control" min-width="8" required type="text" placeholder="you password">
+
+                            <input id="registration-btn" class="login-buttons" type="submit" value="registration">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+    </div>
+<!-- login form end -->
+
+<!-- menu -->
+<!-- з body я забрав класи  "content-body container"  так як в нас в сайті будуть різні блоки  -->
+<body>
+<header class="content-header">
+		<nav class="navbar navbar-expand-lg navbar-light auto-margin">
+            <div class="container">
+                <button class="navbar-toggler menu-btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center " id="navbarNav">
+        		    <ul class="topmenu">
+                        <div class="mobile-logo">
+                            <img src="./images/logo1.png">
+                        </div>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Projects</a>
+                            <ul class="submenu">
+                                <li><a href=""><b>Healthy food</b></a></li>
+                                <li><a href=""><b>Fast Food</b></a></li>           
+                            </ul>
+                        </li>
+                        <li><a href="">Site</a>
+                            <ul class="submenu">
+                                <li><a href="#card-wrapper"><b>Rules nutrition</b></a></li>
+                                <li><a href=""><b>Fast Food</b></a></li>           
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="logo">
+                        <img src="./images/logo1.png">
+                    </div>
+                    <ul class="topmenu">
+                        <li><a href="">Find Us</a>
+                            <ul class="submenu">
+                                <li><a href="https://www.instagram.com/_sofijkasmirnova__/" target="_blank"><b>Instagram</b></a></li>
+                                <li><a href="" target="_blank"><b>Facebook</b></a></li>          
+                            </ul>
+                        </li>
+                        <li><a href="">Contacts</a>
+                            <ul class="submenu">
+                                <li><a href="tel:+380 67 599 15 37">+380675394170 - <b>Kyistar</b></a></li>
+                                <li><a href="tel:+380 97 438 52 51">+380974385251 - <b>Life</b></a></li>
+                                <li><a href="tel:+380 97 599 15 37">+380975991537 - <b>MTC</b></a></li>             
+                            </ul>
+                        </li>
+                        <li><a href="">Projects</a>
+                            <ul class="submenu"></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</header>
+<!-- menu end -->
+
+<!-- login indicatop -->
+    <div class="login-indicator">
+        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="">
+        <div id="login-small-avatar"></div>
+        <span id="name"></span>
+        </button>
+    </div>
+<!-- login indicatop -->
+<!-- gallery carose -->  
+<!-- карусель переніс в окремий блок   --> 
+<div class="bd-example">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="text-center header-button">
+            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-lg btn-primary btn-block login-btn">login</button>
+        </div>
+          <div class="carousel-item active">
+            <img src="./images/111.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption  d-md-block ">
+                <div class="container">
+                  <h3><b>Importance of nutrition</b></h3>
+                  <p>A healthy diet throughout life promotes healthy pregnancy outcomes, supports normal growth, development and ageing, helps to maintain a healthy body weight, and reduces the risk of chronic disease leading to overall health and well-being.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./images/3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption  d-md-block ">
+                <div class="container">
+                    <h3><b>10 rules healthy food</b></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./images/6.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption  d-md-block ">
+              <h3><b>10 food mistakes</b></h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<!-- site body -->
+<main  class="content-main auto-margin"> <!-- забрав звідци клас  content-main щоб в main були різні зони по довжині картки щоб були в контейнері а зображення на всю довжину-->
+    <div class="container block-overflow-auto" id="accordionExampleTest"> 
+        <div class="card-wrapper ">   <!-- card section -->
+    	    <h1><b>The basic rules</b></h1>
+            <h4> of healthy and proper nutrition:</h4>
+            <div class="card1">
+      	       <div class="card-deck">  
+                    <div class="card ">
+                        <div class="" id="headingOne"> <!-- замінив collapse на dropdown-->
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <img src="./images/pug-broccoli.gif" class="card-img-top dropdown-toggle auto-margin" alt="..." > 
+                                <hr class="pictures-underline-animate auto-margin">
+                                <h4 class="card-text">Useful products from all groups</h4>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="" id="headingTwo">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                <img src="./images/giphy (4).gif" class="card-img-top auto-margin" alt="...">
+                                <hr class="pictures-underline-animate auto-margin">
+                                <h4 class="card-text">Drink enough water</h4>
+                            </button>
+                        </div> 
+                    </div>
+                    <div class="card">
+                        <div class="" id="headingThree">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                <img src="./images/giphy (1).gif" class="card-img-top" alt="...">
+                                <hr class="pictures-underline-animate auto-margin">
+                                <h4 class="card-text">Eat slowly</h4>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExampleTest">
+                <div class="card-body">
+                    <p>vegetables, fruits and berries, legumes, eggs, fish, meat, healthy fats and oils, nuts and seeds, whole grains, dairy and dairy products.</p>
+                </div>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExampleTest">
+                <div class="card-body">
+                    <p>Make sure you drink at least 1.5-2 liters of water per day of purified (filtered) or mineral water. But keep in mind that tea, coffee and juices do not replace water. In the heat, during exercise, after drinking protein-rich foods, drink more water.</p>
+                </div>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionExampleTest">
+                <div class="card-body">
+                    <p>Food should be chewed carefully. The digestive process begins in the mouth: the enzymes that produce the salivary glands contribute to the breakdown and initial disinfection of food. Swallowing food without chewing leads to excessive consumption of food, as satiety is associated with mouth receptors.</p>
+                </div>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExampleTest">
+                <div class="card-body">
+                    <p>vegetables, fruits and berries, legumes, eggs, fish, meat, healthy fats and oils, nuts and seeds, whole grains, dairy and dairy products.</p>
+                </div>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="collapseFive" data-parent="#accordionExampleTest">
+                <div class="card-body">
+                    <p>An important supplement to a healthy diet is physical activity. If there is no time for the sport at all, then walking outdoors, morning jogging, charging in the morning no one canceled. Walk more, get rid of the habit of driving one or two stops by transport, be lively.</p>
+                </div>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="collapseSix" data-parent="#accordionExampleTest">
+                <div class="card-body">
+                    <p>This strategy is not only unhealthy — it nearly always backfires. If you don’t eat enough calories throughout the day, you’ll be more likely to overindulge at night. When you focus your efforts all day on skimping on food, you set yourself up for an eating binge later on. And instead of sitting down to a healthy evening meal, you’re more likely to reward yourself for being so “good” all day by reaching for a calorie-bomb like a pint of ice cream or piece of cake.</p>
+                </div>
+            </div>
+            <div class="card2">
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="" id="headingFour">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <img src="./images/giphy (3).gif" class="card-img-top" alt="...">
+                                <hr class="pictures-underline-animate auto-margin">
+                                <h4 class="card-text">Less sweet</h4>
+                            </button>
+                        </div>
+                    </div>
+      
+                    <div class="card">
+                        <div class="" id="headingFive">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                <img src="./images/9338bb51661577.58f63a7bb2c10.gif" class="card-img-top" alt="...">
+                                <hr class="pictures-underline-animate auto-margin">
+                                <h4 class="card-text">Don't forget to move</h4>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="" id="headingSix">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                <img src="./images/73Oz.gif" class="card-img-top" alt="...">
+                                <hr class="pictures-underline-animate auto-margin">
+                                <h4 class="card-text">Don’t starve yourself</h4>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  <!-- end card section -->
+    </div>
+
+<!-- Middle area picture -->
+<div class="content-image background-large-section picture-1 center-block">
+	<!--<img src="https://images.ctfassets.net/qpn1gztbusu2/5LR10K3pDg0We8anQPpkBn/0c22c7e9e451b9ff7a9d1313b06cf78e/meditation-hoerbuecher.jpg" width="100%">   картинку фону краще в css прописати-->
+	<div class="container block-overflow-auto auto-margin">
+        <div class="center-block">
+            <div class="row">
+                <div class="col-md-9 col-sm-12 justify-block">
+                    <h2 class="very-large-text">nutrition</h2>
+                </div>    
+                <div class="col-md-3 col-sm-12 text-block justify-block">    
+                    <h3>Nutrition is one of the basic vital conditions for human existence. Nutrition affects one's health, performance, mood and life expectancy.</h3>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          About nutrition
+                                    </button>
+                                </h2>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body detail-text">
+                        <p> Violations of the basic principles of nutrition cause a number of diseases - from elementary diseases to a decrease in the immune status of the organism.It is unlikely to find at least one person who doesn't want to be healthy, doesn't want to be in a good mood and isn't going to live long. However, many people's lifestyles and habits seem to suggest that they do not really want or plan.It is quite simple to explain such a contradiction. One desire is not enough. You also need to know how to eat rationally and follow a number of rules. Quality and life expectancy of a person depend on many factors, the main of which is proper nutrition, a rational mode of work and rest, moderate physical activity.
+                    Ancient Eastern wisdom says:<font color="red"> "We are what we eat."</font> It is this clear, concise and precise wording that explains what our lives depend on.The food we eat must be balanced, that is, contain enough calories, proteins, fats and carbohydrates, as well as vitamins and minerals to provide our body with energy and the necessary material to build and repair tissues and cells. If young people pay sufficient attention to proper nutrition, most diseases that occur in old age can be avoided.
+                    For most people, proper eating is only associated with prohibitions. In fact, healthy eating does not involve sacrifice, but rather turns into longevity and wellness. Reaching your peak life is not even in ideal living conditions, by virtue of a person who adheres to the right diet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" content-card ">
+    <div class="container">   <!-- додав контейнер що нерозповзались зображення --> 
+        <div class="center-block">
+            <div class="card-deck center-block">
+                <div class="row">   
+                    <div class="col-md-4  col-sm-12 round-description">   <!-- заість card3 тут примінив 3 колонки бутстрапом col-md col-sm 12-колонкової системи -->
+                        <img src="./images/11.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <hr class="pictures-underline auto-margin">
+                            <p class="card-text">Get up from the table slightly hungry and you will always be healthy. " - 
+                        Claudius Galen</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4  col-sm-12 round-description">
+                        <img src="./images/save-trees-save-nature-psu360002939-small-original-imaekkpws5uvrqyy.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <hr class="pictures-underline auto-margin">
+                            <p class="card-text">"We live not to eat, but eat to live." - 
+                    Socrates<br>:)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 round-description">
+                        <img src="./images/Shaqi_jrvej.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <hr class="pictures-underline auto-margin">
+                            <p class="card-text">"Better from time to time  malnutrition than always to overeat" - Abu-l'-Faraj</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-image background-large-section picture-2 center-block">
+    <!--<img src="./images/123.jpg" width="100%">-->
+    <div class="container">
+        <div class="row">     
+            <div class="col-md-6 col-sm-12 justify-block">   
+            	<div class=" card-darck-background">
+                    <h2><b>Eat, drink and live longer!!!</b></h2>
+                     <p><b><i>Some things about life—and how long we get to enjoy it—are out of our control. But emerging nutrition science research, as well as data collected from people in their 90s and beyond, shows what, when, and how we eat has a profound influence on how long we live. Want to eat for a long and healthy life? We're compiled the most compelling and surprising tips here!</i></b></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 video-section"> 
+                <div class=" content-card">
+                    <video class="" controls="controls" poster="./images/maxresdefault.jpg">
+                        <source src="./video/Eat These Foods to Live to 100 - Health.mp4" type='video/mp4' >
+                    </video>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+<!-- hidden block  use login  to see it -->
+<div class=" content-card login-access-box" style="display:none;">
+    <div class="container">   <!-- додав контейнер що нерозповзались зображення --> 
+        <div class="center-block">
+            <h2>Hidden block</h2>
+            <div class="card-deck center-block"> 
+
+                <div class="row">   
+
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                              <strong class="d-inline-block mb-2 text-primary">World</strong>
+                              <h3 class="mb-0">Featured post</h3>
+                              <div class="mb-1 text-muted">Nov 12</div>
+                              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                              <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                              <strong class="d-inline-block mb-2 text-success">Design</strong>
+                              <h3 class="mb-0">Post title</h3>
+                              <div class="mb-1 text-muted">Nov 11</div>
+                              <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                              <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-image background-large-section picture-3 center-block login-access-box dark-section" style="display:none;">
+    <!--<img src="./images/123.jpg" width="100%">-->
+    <div class="container">
+        <h1>hidden video section</h1>
+        <div class="row">     
+            <div class="col-md-6 col-sm-12 justify-block"> 
+                   
+                <div class=" card-darck-background">
+                    <h2>Video 1</h2>
+                    <video class="video-style" controls="controls" poster="./images/maxresdefault.jpg">
+                        <source src="./video/Eat These Foods to Live to 100 - Health.mp4" type='video/mp4' >
+                    </video>
+                    <h2><b>Eat, drink and live longer!!!</b></h2>
+                     <p><b><i>Some things about life—and how long we get to enjoy it—are out of our control. But emerging nutrition science research, as well as data collected from people in their 90s and beyond, shows what, when, and how we eat has a profound influence on how long we live. Want to eat for a long and healthy life? We're compiled the most compelling and surprising tips here!</i></b></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 video-section">
+                
+                <div class=" card-darck-background">
+                    <h2>Video 2</h2> 
+                    <video class="video-style" controls="controls" poster="./images/maxresdefault.jpg">
+                        <source src="./video/Eat These Foods to Live to 100 - Health.mp4" type='video/mp4' >
+                    </video>
+                    <h2><b>Eat, drink and live longer!!!</b></h2>
+                     <p><b><i>Some things about life—and how long we get to enjoy it—are out of our control. But emerging nutrition science research, as well as data collected from people in their 90s and beyond, shows what, when, and how we eat has a profound influence on how long we live. Want to eat for a long and healthy life? We're compiled the most compelling and surprising tips here!</i></b></p>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+<!-- hidden block  use login  to see it -->
+</main>
+
+<footer class="content-footer botoom-frame">
+    <div class="container">
+        <div class="row">
+    	    <div class="footer-logo text-center col-md-4 col-sm-12 justify-block">
+
+                <div class="form-signin">
+                    <img src="./images/logo1.png">
+                </div>
+            </div>
+            <div class="content-info col-md-4 col-sm-12">
+                <h3><b>About us</b></h3>
+                    <p>We are 3Juns(3 juniors), which like programming very much. And want to help people with nutrition problem, because it's very important problem on all world. We tried to did this site not only simple and comfortable to use, but and also interesting and little funny. We hope you'll  enjoying our site. Break a leg, and live for a looooong time with a pleasure!!! :):):) <br></p>
+                    <div class="text-center">
+                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-lg btn-primary btn-block login-btn">login</button>
+                    </div>
+                    
+                <div class="social-footer">
+                    <a href="https://www.instagram.com/_sofijkasmirnova__/" target="_blank"><img width="100%" src="./images/Instagram-Icon.png"></a>
+                    <a href="" target="_blank"><img width="100%" src="./images/facebook-logo-png-5a35528eaa4f08.7998622015134439826976.jpg"></a>
+                </div>
+            </div>
+            <div class="content-form col-md-4 col-sm-12">
+                <div class="row">
+                    
+                    <div class=" col-md-10">
+                        <p><b>Saharova 37, Lviv</b></p>
+                    </div>
+                    <div class="col-md-2">
+                        <img  src="./images/gps.png" width="100%">
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-10 col-sm-10">
+                        <address>
+                           <a href=""> <b>sofijkasmirnova@gmail.com</b></a>
+                        </address>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <img  src="./images/email-icon.png" width="100%">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 phones">
+                        <a href="tel:+380 67 599 15 37">+380675394170 - <b>Kyistar</b><br></a>
+                        <a href="tel:+380 97 438 52 51">+380974385251 - <b>Life</b><br></a>
+                        <a href="tel:+380 97 599 15 37">+380975991537 - <b>MTC</b> </a>
+                    </div>
+                    <div class="col-md-2">
+                        <img  src="./images/phone_symbol_2-512.png" width="100%">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="botoom-frame">   </div>
+</footer>
+
+
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="./js/script.js"></script>
+</html>	
