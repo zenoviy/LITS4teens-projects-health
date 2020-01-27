@@ -1,0 +1,240 @@
+const loginLogoutLogic = {
+	formSettings: {
+		formRegistrationStatus: false,	
+	},
+	imageDb:["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9"],
+	controllers:{
+		loginLogoutForm: document.querySelector("#login-logout-form"),
+		registrationForm: document.querySelector("#registration-form"),
+		registrationSwitcher: document.querySelectorAll(".registration-switcher"),
+		loginBtn: document.querySelector("#login-btn"),
+		registrationBtn: document.querySelector("#registration-btn"),
+		exampleModalCenterTitle: document.querySelector("#exampleModalCenterTitle"),
+		loginInformationArea: document.querySelector("#login-information"),
+
+		nameIndicator: document.querySelector("#name"),
+		youName: document.querySelector("#you-name"),
+		imageSelect: document.querySelector("#image-select"),
+		loginSmallAvatar: document.querySelector("#login-small-avatar"),
+
+		logOutField: document.querySelector("#log-out-field"),
+		logInRegField: document.querySelector("#log-in-reg-field"),
+
+		logOutBtn:document.querySelector("#log-out"),
+		uploadPicture: document.querySelector("#uploadPicture"),
+		loginPicture: document.querySelector("#login-picture"),
+	},
+	initForm(){
+		let localObject = this;
+		/*  login event */
+		this.controllers.loginLogoutForm.addEventListener("submit", function(event){
+			event.preventDefault()
+			localObject.loginUser(this, false)
+		});
+		/*  registration event */
+		this.controllers.registrationForm.addEventListener("submit", function(event){
+			event.preventDefault()
+			localObject.collectData(this)
+		});
+
+		let loginButtons = [...this.controllers.registrationSwitcher];
+		loginButtons.forEach((x, i) =>{
+			x.addEventListener("click", function(event){
+				event.preventDefault()
+				localObject.formSettings.formRegistrationStatus = !localObject.formSettings.formRegistrationStatus;
+				if(i == 0){
+					loginButtons[0].className = `btn btn-primary registration-switcher active-login-btn`;
+					loginButtons[1].className = `btn btn-primary registration-switcher`;
+					localObject.switchClasses(localObject.controllers.loginLogoutForm, "show-area");
+					localObject.switchClasses(localObject.controllers.registrationForm, "hidden-area");
+				}else{
+					loginButtons[0].className = `btn btn-primary registration-switcher `;
+					loginButtons[1].className = `btn btn-primary registration-switcher active-login-btn`;
+					localObject.switchClasses(localObject.controllers.loginLogoutForm, "hidden-area");
+					localObject.switchClasses(localObject.controllers.registrationForm, "show-area");
+				}
+			})
+		})
+		this.loadImages(this.controllers.uploadPicture);
+		this.checkLogin();
+	},
+	switchClasses(object, styleClasses, status){
+		object.className = 	styleClasses;
+	},
+	loginUser(loginData, state){
+		let allStorage = window.localStorage;
+		let res = JSON.parse(this.storageCall(allStorage, "allUsers"));
+		let localData = {};
+		if(state){
+			for(let items in loginData){
+				if(items.name){
+					localData[items.name] = items.value;
+				}
+			}
+		}else{
+			for(let items of loginData){
+				if(items.name){
+					localData[items.name] = items.value;
+				}
+			}
+		}
+		let validatin = this.validateUser(res, localData, true);
+		if(!validatin.isValid){
+			this.showMessage(this.controllers.loginInformationArea, 'login is sucess', true);
+			let currentUser = {
+				name: res[validatin.index].name,
+				email: res[validatin.index].email,
+				image: res[validatin.index].image,
+			}
+			for(let input of this.controllers.registrationForm){
+				if(input.name){
+					input.name = ""
+				}
+			}
+			allStorage.setItem("currentUser", JSON.stringify(currentUser));
+			
+		}
+		this.checkLogin();
+	},
+	checkLogin(){
+		let allStorage = window.localStorage;
+		let res = JSON.parse(this.storageCall(allStorage, "currentUser"));
+		if(res){
+			this.controllers.loginSmallAvatar.innerHTML = `<img width="50" height="50" src="${res.image}">`
+			this.showMessage(this.controllers.nameIndicator, `${res.name}`, true);
+			this.showMessage(this.controllers.youName, `${res.name}`, true);
+			this.controllers.loginPicture.src = res.image; 
+			this.showLogout(true)
+		}else{
+			this.showLogout(false)
+			this.controllers.loginSmallAvatar.innerHTML ="";
+			this.showMessage(this.controllers.youName, ``, false);
+			this.showMessage(this.controllers.nameIndicator, ``, false);
+		}
+	},
+	showLogout(state){
+		let localObject = this;
+		if(state){
+			this.controllers.logOutField.className = "show-area";
+			this.controllers.logInRegField.className = "hidden-area";
+			this.controllers.logOutBtn.addEventListener("click", function(event){
+				localObject.logOut()	
+			})
+		}else{
+			this.controllers.logOutField.className = "hidden-area";
+			this.controllers.logInRegField.className = "show-area";
+		}
+	},
+	logOut(){
+		localStorage.removeItem("currentUser");
+		this.checkLogin();
+	},
+	loadImages(selector){
+		let localObject = this;
+		var curFiles;
+		let domObject = "";
+		this.imageDb.forEach(obj =>{
+			domObject += `<li  class="single-imgage-list dropdown-item" name="${obj}"><img width="100" height="100" src="./images/avatar/${obj}.jpg">${obj}</li>`
+		})
+		this.controllers.imageSelect.innerHTML = domObject;
+		let list = document.querySelectorAll(".single-imgage-list");
+		list = [...list];
+		list.forEach(singleList=>{
+			singleList.addEventListener("click", function(event){
+				let localObj = singleList
+				selector.innerHTML = `<img src="./images/avatar/${localObj.attributes.name.value}.jpg">`;
+				localObject.imagePatch = `./images/avatar/${localObj.attributes.name.value}.jpg`;
+			})
+		})
+	},
+	collectData(object){
+		let logData = {};
+		let innerData = {};
+		let random = new Date().getTime();
+		if(this.imagePatch){
+			for(let items of object){
+				if(items.name){
+					innerData[items.name] = items.value;
+				}
+			}
+			if(this.imagePatch){
+				innerData.image = this.imagePatch
+			}
+			Object.defineProperty(logData, `${random}`, {
+				value:  innerData,
+				writable: true,
+				enumerable: true,
+				configurable: true
+			})
+			this.storageSet(logData)
+		}else{
+			this.showMessage( this.controllers.loginInformationArea, `Upload picture first!!!`, true);
+		}
+	},
+	storageCall(storage, db){
+		return storage.getItem(db);
+	},
+	storageSet(items){
+		let allStorage = window.localStorage;
+		let res = this.storageCall(allStorage, "allUsers");
+		let allLocalDate = {};
+		if(res){
+			let dataBase = JSON.parse(res);
+			if(this.validateUser(dataBase, items, false).isValid){
+				allLocalDate = this.addUser(dataBase, items)
+				allStorage.setItem("allUsers", JSON.stringify(allLocalDate))	
+				this.loginUser(items, true)
+			}else{
+				allStorage = window.localStorage;
+				res = this.storageCall(allStorage);
+				this.showMessage(this.controllers.loginInformationArea, 'user with this email already Exist!!!', true);
+			}
+		}else{
+			allStorage.setItem("allUsers", JSON.stringify(items))
+			allStorage = window.localStorage;
+			res = this.storageCall(allStorage);
+		}
+	},
+	addUser(dataItems, items){
+		let localObject = {};
+		let index = 0;
+		let localKey = Object.keys(dataItems);
+		localKey.forEach(key => {
+			localObject[key] = dataItems[key];
+		})
+		localObject[Object.keys(items)] = items[Object.keys(items)]
+		return localObject
+	},
+	validateUser(base, curentDate, loginState){
+		let currentObjects = (!loginState)? curentDate[Object.keys(curentDate)[0]] : curentDate;
+		let validateState = true;
+		let userIndex;
+		for(let baseItems in base){
+			if(!loginState){
+				if(base[baseItems].name === currentObjects.name || base[baseItems].email === currentObjects.email
+				){
+					validateState = false;
+					userIndex = baseItems;
+				}
+			}else{
+				if(base[baseItems].password === currentObjects.password && base[baseItems].email === currentObjects.email
+				){
+					validateState = false;
+					userIndex = baseItems;
+				}
+			}
+		}
+		return { isValid:validateState, index:userIndex }
+	},
+	showMessage( displayElement, text, errorState){
+		let innerText = ``;
+		if(errorState){
+			innerText = text;
+		}else{
+			innerText = ``;
+		}
+		displayElement.innerHTML = innerText
+	}
+}
+window.localStorage.clear();  		/* метод щоб очистити базу даниїх від записів */
+loginLogoutLogic.initForm()

@@ -1,0 +1,837 @@
+*{
+padding:auto;
+margin:0px;
+text-align:center;
+
+}
+
+/*body section*/
+.content-body{
+ background: white;
+ margin: 0;
+ padding: 0;
+}
+
+/*      відмінив контейнер так як краще використовувати бутстраповський клас контейнер, але при бажанні можна створити і свій так як в низу   */
+/*.container{           
+	max-width: var(--main-width);
+	margin: 0 auto;
+	z-index: 5;
+}*/
+/*header section*/
+.content-header{
+     width: 100%;
+     position: fixed;
+     z-index: 100;
+     background: white;
+     /*background: #CCFFCC;*/
+ }
+ /*logo section*/
+ .logo {
+ 	display: inline-block;
+ 	float: center;
+    width: 150px;
+    margin-left: 41px;
+    /*height: 95px;*/           /* відмінив висоту, так як у нас і так є логотип з висотою */
+    
+ }
+ .logo img{
+ 	width: 100%;
+ }
+
+ .mobile-logo img{
+ 	display: none;
+ 	margin-left: 17px;
+ 	width: 150px;
+    height: auto;       /*  щоб не деформувався логотип задаємо довжину а висоту стаим на авто */
+
+ }
+ /*menu section*/
+ nav ul {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  display: inline-block;
+  display: table;
+  margin: 0 auto;
+  float: center;
+}
+.topmenu > li {
+  float: left;
+  position: relative;
+}
+.topmenu > li > a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #9f9f9f;
+  padding: 10px 35px 10px;  /* змінив значення кнопки ають бути не дуже великі*/
+  text-decoration: none;
+}
+.topmenu li a:hover {color: #D5B45B;}
+
+.submenu {
+    background: #273037;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 5;
+    width: 190px;
+    opacity: 0;
+    font-size: x-large;
+    transform: scaleY(0);
+    transform-origin :0 0;
+    transition: .5s ease-in-out;
+}
+.submenu a {
+    color: white;
+    text-align: left;
+    padding: 15px 17px;
+    font-size: 12px;
+    text-decoration: none;
+    
+}
+.submenu li:last-child a {border-bottom: none;}
+.topmenu > li:hover .submenu {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.section{
+	display: none;
+}
+/*text section*/
+ h1{
+ color: black;
+}
+
+/*ball section*/
+/*.arrow-ball{
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	border-radius: 50%;
+	animation: ball-animation 2s infinite;
+	background-image: url('../images/backrounds/arrow-down.png');
+	background-size: cover;
+	background-position: center;
+	
+}
+.arrow-container{
+	padding-top: 0px;
+}
+@keyframes ball-animation{
+	0% { margin-top:0px; width: 40px; height: 50px;  background-size: 300px 150px;}
+	50% { margin-top: 150px;  width: 70px; height: 30px;  background-size: 400px 250px;}
+	60% {  width: 30px; height: 50px;  }
+	80% {  width: 60px; height: 40px;  }
+	100% { margin-top: 0px; width: 40px; height: 50px;  background-size: 300px 150px;}
+}*/
+
+.content-main{
+	/*border: 2px solid black;*/
+	/*width: 85%;
+    min-height: 1000px;
+   float: left;
+    margin-top: 10px;
+    margin-left: 6.5%;
+    margin-right: 6.5%;*/
+}
+/*text section*/
+p, h1, h2, h3, h4, h5, h6{
+	color: #3D3D3B;
+}
+/*card section*/
+.card-wrapper{
+	/*border: 1px solid purple;*/
+	overflow: hidden;
+	width: 100%;
+    position: relative;
+    float: left;
+	padding-top:50px;
+    padding-bottom:30px;
+	
+}
+.card-btn{
+	background: #86A20C;
+	color: white;
+}
+
+.card-text{
+	width: 300px;
+	padding: 5px;
+}
+.card{
+	display: inline-block;
+
+}
+.card1{
+	/*float: left;*/
+	width: 100%;
+	/*border: 1px solid black;*/
+	position: relative;
+	margin: 10px;
+	height: 100%;
+
+}
+.card-img-top {
+    border: 3px solid #76B944;
+    width: 150px;
+    height: 150px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.card2{
+	float: left;
+	width: 100%;
+	/*border: 1px solid orange;*/
+	position: relative;
+	margin: 10px;
+	height: 100%;
+}
+
+
+
+
+/*image section*/
+.content-image{
+	width: 100%;
+	min-height: 600px;
+	/*float: left;*/
+}
+.text-image{
+	position: relative;
+	float: right;
+	width: 25%;
+	margin-top: -61%; 
+	margin-right: 3%;
+}
+
+/*card section 2*/
+.content-card{
+  /*border: 1px solid brown;*/
+  padding: 30px;
+  width: 100%;   
+  display: grid;
+  
+}
+.card-text2{
+   font-size: 14px;
+}
+.card-img-top2{
+	width: 200px;
+    height: 200px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.card3{
+	height: 100%;
+	/*border: 1px solid black;*/
+	width: 30%;
+}
+/*video section*/
+.video-wrapper{
+    /*border: 1px solid orange;*/
+    width: 100%;
+	height: 90%;
+	/*margin: 5px;*/
+	float: left;
+	overflow-y: hidden;	
+}
+.text{
+	position: relative;
+	float: left;
+	width: 25%;
+
+	margin-top: -44%; 
+	margin-left:  18%;
+}
+.content-video{
+	width: 40%;
+	position: relative;
+	float: right;
+	margin-top: -46%; 
+	margin-right: 12%;
+}
+
+/*footer section*/
+.content-footer{
+	/*background: #FFCC99;*/  /* не дуже добрий колір сайт світлим, яскравим має бути*/
+	width: 100%;
+	min-height: 630px;
+	float: left;
+	/*border: 2px solid green;*/
+}
+.footer-logo{
+	width: 1%;
+	float: left;
+	position: relative;
+	
+}
+/* цей стиль я замінив бутстрапом col-md..  col-sm..*/
+/*.content-form{   
+	width: 20%;
+	height: auto;
+	float: left;
+	margin-left:35%;
+	margin-top: 3%;
+}*/
+/*.location{
+	float: left;
+}*/
+/*.location img {
+   height: 40px;
+   width: 40px;   
+   float: left;
+   border-top-left-radius: 50%;
+   border-top-right-radius: 50%;
+   border-bottom-left-radius: 50%;
+   border-bottom-right-radius: 50%;
+}
+email{
+	float: left;
+}
+.email img{
+   height: 40px;
+   width: 40px;  
+   float: left;
+   border-top-left-radius: 50%;
+   border-top-right-radius: 50%;
+   border-bottom-left-radius: 50%;
+   border-bottom-right-radius: 50%;
+}
+.phone{
+	float: left;
+}
+.phone img{
+   height: 40px;
+   width: 40px;  
+   float: left;
+   border-top-left-radius: 50%;
+   border-top-right-radius: 50%;
+   border-bottom-left-radius: 50%;
+   border-bottom-right-radius: 50%;
+}*/
+.content-form img{
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+}
+.text-form{
+	float: left;
+	margin: 10px;
+}
+/*  так само замінив цей стиль бутстрапом*/
+/*.content-info{
+	width: 26%;
+	height: auto;
+	margin-left: 64%;
+	margin-top: 1%;
+}*/
+.social-footer{
+	display: inline-block;
+	width: 60%;
+	/*border: 1px solid green; */
+  padding-left: 5%;
+
+}
+.social-footer img{
+   float: left;
+  padding:  5%;
+ 
+   height: 90px;
+   width: 90px;  
+   float: left;
+   border-top-left-radius: 50%;
+   border-top-right-radius: 50%;
+   border-bottom-left-radius: 50%;
+   border-bottom-right-radius: 50%;
+}
+/*.form-style-6{
+	font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 16px;
+	background: #F7F7F7;
+}
+.form-style-6 h1{
+	background: #86A20C;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus
+{
+	box-shadow: 0 0 5px #43D1AF;
+	padding: 3%;
+	border: 1px solid #86A20C;
+}
+
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: #86A20C;
+	border-bottom: 2px solid #30C29E;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+}
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+	background: #CCFF99;
+	color: black;
+}*/
+
+/*=======================================================    2019 08 22  додаю додаткові стилі*/
+.header-button{
+    position: absolute;
+    z-index: 90;
+    margin-top: 100px;
+    width: 100%;
+}
+.header-button button{
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+.upload-picture{
+    
+    margin: 0 auto;
+    width:100px;
+    height:100px;
+    background: #FF5A5A;
+    border-radius:50%;
+    background-image: url(../images/picture_icon.png);
+    background-size: cover;
+}
+.registration-switcher{
+    width:50%;
+    background: none;
+    border: none;
+}
+.button-wrapper{
+    padding-bottom: 20px;
+}
+.button-wrapper .btn:focus{
+    box-shadow: none;
+}
+.login-buttons{
+    margin-top:10px;
+    padding:10px;
+    border:1px solid #FF5A5A;
+    border-radius: 5px;
+    color: #FF5A5A;
+    min-width:100px;
+    background:none;
+    transition: .3s linear;
+}
+.login-buttons:hover{
+    background: #FF5A5A;
+    color:#fff;
+}
+.login-picture{
+    width:100px;
+    height:auto;
+}
+.upload-picture img{
+    width:100%;
+    margin: 0 auto;
+}
+.login-indicator{
+    position: fixed;
+    float: right;
+    width: 100px;
+    /*border: 1px solid #bbb;*/
+    right: 0;
+    /*margin-top: 10%;*/
+    background: #fff;
+    padding:5px;
+    z-index: 200;
+    border-radius:5px 0px 0px 5px;
+    
+}
+.login-indicator span{
+    color: #bbb;
+    font-size: 15px;
+}
+.login-indicator button{
+    background: none;
+    border:0px;
+}
+.image-select{
+    width: 600px;
+    max-height:400px;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.single-imgage-list {
+    position: relative;
+    width: 31%;
+
+}
+.hidden-area{
+    display: none;
+}
+.show-area{
+    display: block;
+}
+.active-login-btn{
+    border-bottom: 2px solid red;
+}
+.auto-margin{
+    margin: auto;
+}
+.justify-block{
+    display: grid;
+    align-content: center;
+}
+a{
+    color:#ff5a5a;
+    transition: .3s linear;
+}
+h1{
+    text-transform: uppercase;
+}
+a:hover{
+    color: orange;
+    text-decoration: none;
+}
+.block-overflow-auto{
+    overflow:auto;
+}
+.video-style{
+    width:100%;
+}
+.dark-section h1{
+    color:#fff;
+}
+.picture-1{
+    background-image: url("../images/background/meditation-hoerbuecher.jpg");
+}
+.picture-2{
+    background-image: url("../images/background/fruit-wallpapers-28251-9436795.jpg");
+}
+.picture-3{
+    background-image: url("../images/background/vegetables-wallpapers.jpg");
+}
+.background-large-section{      /* цей клас приміняйте коли фон має рухомий  разом з цим класом треба писати класи з посиланнями на зображення типу так "background-large-section-static picture-2" (так код буде коротший)*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.background-large-section-static{  /* цей клас приміняйте коли фон має бути нерухомий*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;   
+}
+.text-block h3{
+    text-align: left;
+    color:#fff;
+    /*font-size: 18px;*/
+    padding-bottom: 30px;
+}
+.card-header .btn-link{
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    font-size: 20px !important;
+}
+.accordion .card{
+    width:100%;
+}
+.very-large-text{
+    font-size: 10em;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+.detail-text{
+    background: #1c1c1c94;
+}
+.detail-text p {
+    color: #fff;
+}
+.card {
+    border: 0px;
+}
+.card1{
+    padding-top: 50px;
+    /*padding-bottom:30px;*/
+}
+.card-wrapper  .card-body{
+    background: #d3e1964f;
+}
+.card-darck-background{
+    background:rgba(0, 0, 0, 0.66);
+    padding: 30px;
+    border-radius:5px;
+}
+.card-darck-background h2, .card-darck-background p{
+        color:#fff;
+}
+.card-wrapper{
+
+}
+.dropdown-toggle::after{
+    transform: rotateZ(-90deg);
+}
+.dropdown-toggle:hover .dropdown-toggle::after{
+    transform: rotateZ(0deg);
+}
+.center-block{
+    display: grid;
+    align-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+.center-block .row .round-description{
+    margin: 0;
+}
+.carousel-item img{     /* виставляю щоб зображення img були завжди на всю довжину і автоматиччно в висоту бо тег img коли задана висота сплющщує картинку ( коли висота не в пропорції з довжиною )*/
+    width:auto;
+    height: 100%;
+    margin: 0 auto;
+}
+.carousel-inner{            /* задаю щоб галерея була певної висоти */
+    height: 650px;/**/
+}
+.carousel-caption{
+    color:#fff;
+    background: /*linear-gradient(0deg, rgba(30, 34, 25, 0.47) 50%, rgba(93, 115, 0, 0) 100%)*/  radial-gradient(ellipse at center, rgba(30, 34, 25, 0.65) -60%,rgba(30, 34, 25, 0) 70%);
+    width:100%;
+    right: 0%;
+    left: 0%;
+    padding-bottom: 147px;
+    bottom: 0;
+}
+.btn-link {
+    color: #194a00;
+    text-align: center;
+    transition: .5s linear;
+}
+.pictures-underline-animate{
+    height: 2px;
+    background: #76b944;
+    width: 0px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: .5s linear;
+}
+.pictures-underline{
+    height: 2px;
+    background: #76b944;
+    width: 94px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.btn-link:hover .pictures-underline-animate{
+    width:100px;
+}
+.btn-link:focus .pictures-underline-animate{
+    width:100px;
+    text-decoration: none;
+}
+.btn-link h4, .btn-link, button, .btn-link:hover, .btn-link:focus {
+    text-decoration: none;
+}
+.carousel-caption h3, .carousel-caption p{
+    color:#fff;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 25px #060606;
+}
+.video-section video{
+    width: 100%;
+}
+.botoom-frame{
+    background-image: url("../images/background/border-bottom.jpg");
+    background-repeat:no-repeat;
+    background-position: bottom;
+    background-size:100%;
+}
+.content-info h3{
+    text-transform: uppercase;
+}
+.content-info{
+    border-left:1px solid #bbbbbb3d;
+    border-right:1px solid #bbbbbb3d;
+}
+.content-footer{
+    border-top: 5px solid #86A20C;
+    padding-top: 30px;
+    margin: none;
+}
+.content-form .row{
+    min-height: 75px;
+}
+.content-form .row address, .content-form .row a, .content-form .row p, .content-form .row .phones{
+    text-align: right;
+}
+.login-btn{
+    background-color: #ff5a5a;
+    border: 1px solid #ff9191;
+    margin-bottom:50px;
+    margin-top:30px;
+    transition: .5s linear;
+}
+.login-btn:hover{
+    background-color: #ff5a5a;  /*#86a20c*/
+}
+.btn-primary:focus {
+    box-shadow: 0 0 0 .2rem rgba(255, 70, 38, 0.5);
+}
+.btn-primary:hover {
+    border-color: #df2c00;
+}
+
+/*=======================================================   кінець стилів */
+@media screen and (max-width: 650px){
+     .logo{
+     	display: none;
+        margin-left: 0px;
+     }
+     .mobile-logo img{
+         display: block;
+         margin: 0 auto;  /* відцентровуєм логотип*/
+     }
+     nav {
+     	display: none;
+     }
+     
+   .section {   
+    display: flex;
+    justify-content: right;
+    align-items: right;
+     }
+  .menu-btn{
+   background: #E5E7E9;
+   display: block;
+   position: relative;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   float: right; 
+  }
+  .menu-btn span,
+  .menu-btn span::before,
+  .menu-btn span::after{
+   	position: absolute;
+   	top: 50%;
+   	margin-top: -1px;
+   	left: 50%;
+   	margin-left: -10px;
+   	width: 20px;
+   	height: 2px;
+   	background-color:black;
+   } 
+  .menu-btn span::before,
+  .menu-btn span::after{
+     content: '';
+     display: block;
+     transition: 0.5s;
+   } 
+  .menu-btn span::before{
+  	transform: translateY(-5px);
+  } 
+   .menu-btn span::after{
+    transform: translateY(5px); 
+    }
+  .menu-nav-link{
+  	text-decoration: none;
+  	display: block;
+  	color: black;
+  	margin-top: 20px;
+  }  
+  .menu-nav{
+  	transition: 0.5s;
+  	transform-origin: bottom center;
+  	transform: scaleY(0) translateY(20%);
+  	opacity: 0;
+  }
+  .menu-nav-active{
+  	transform: scaleY(1) translateY(0%);
+  	opacity: 1;
+  }   
+  .very-large-text {
+    font-size: 5em;
+  }
+  .carousel-item img {
+    width: auto !important;
+    height: 100vh;
+    margin-left: -50%;
+  }
+  .header-button {
+    margin-top: 175px;
+  }
+  .carousel-caption {
+    padding-bottom: 10px;
+  }
+  .justify-block {
+    width:100%;
+  }
+  .content-form div{
+    width:100%;
+  }
+  .content-form a, .content-form p{
+    margin: 0 auto;
+    display: block;
+    text-align: center !important;
+  }
+  .content-form {
+        padding-bottom: 50px;
+    }
+}
+
+
